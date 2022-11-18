@@ -30,7 +30,7 @@ class MovieList extends React.Component<{}, State> {
   }
 
   componentDidUpdate() {
-    console.log('[MovieList] DidUpdate')
+    console.log('[MovieList] DidUpdate');
   }
 
   addMovie = () => {
@@ -77,7 +77,7 @@ class MovieList extends React.Component<{}, State> {
         <AddMovieForm onChange={this.changeFormValue} onAddMovie={this.addMovie}/>
         <div>
           {this.state.movies.map(movie => (
-            <Movie key={Math.random()} movie={movie.name} onNameChange={event => this.changeName(event, movie.id)} onDelete={() => this.deleteMovie(movie.id)}/>
+            <Movie key={movie.id} movie={movie.name} onNameChange={event => this.changeName(event, movie.id)} onDelete={() => this.deleteMovie(movie.id)}/>
           ))}
         </div>
       </div>
