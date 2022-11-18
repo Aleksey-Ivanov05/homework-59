@@ -25,6 +25,14 @@ class MovieList extends React.Component<{}, State> {
     }))
   }
 
+  componentDidMount() {
+    console.log('[MovieList] DidMount');
+  }
+
+  componentDidUpdate() {
+    console.log('[MovieList] DidUpdate')
+  }
+
   addMovie = () => {
     if (this.state.formValue) {
       const newMovie = {
@@ -42,11 +50,11 @@ class MovieList extends React.Component<{}, State> {
   changeName = (event: React.ChangeEvent<HTMLInputElement>, id: number) => {
     this.setState(prev => ({
       ...prev,
-      movies: this.state.movies.map((movieName) => {
+      movies: prev.movies.map(movieName => {
         return id === movieName.id ? {
           ...movieName,
           name: event.target.value
-        } : movieName
+        } : movieName;
       }),
     }))
   }
@@ -60,8 +68,10 @@ class MovieList extends React.Component<{}, State> {
     }))
   }
 
+
+
   render() {
-    console.log(this.state.movies)
+    console.log('[MovieList] render');
     return (
       <div className="p-4" style={{margin: "0 auto", maxWidth: "700px"}}>
         <AddMovieForm onChange={this.changeFormValue} onAddMovie={this.addMovie}/>

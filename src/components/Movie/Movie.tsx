@@ -6,10 +6,22 @@ interface Props {
 }
 
 class Movie extends React.Component<Props> {
-  shouldComponentUpdate(nextProps: Readonly<Props>): boolean {
-    return this.props.movie !== nextProps.movie;
+
+  componentDidMount() {
+    console.log('[Movie] DidMount');
   }
+
+  componentDidUpdate() {
+    console.log('[Movie] DidUpdate');
+  }
+
+  shouldComponentUpdate(nextProps: Props): boolean {
+    console.log('[Movie] ShouldComponent')
+    return nextProps.movie !== this.props.movie;
+  }
+
   render() {
+    console.log('[Movie] render');
     return (
       <div className="p-2 my-2 d-flex">
         <input className="border border-1 border-dark p-2 w-100 me-3" value={this.props.movie} onChange={this.props.onNameChange}/>
